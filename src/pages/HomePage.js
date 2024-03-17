@@ -1,27 +1,52 @@
-// src/pages/HomePage.js
-import React, { useState } from 'react';
-import MapView from '../components/MapView'; // A component you'd create for the map
-import SearchBar from '../components/SearchBar'; // A component for the search inputs
-import PropertyList from '../components/PropertyList'; // A component to list properties
-import './HomePage.css'; // HomePage styles
+import React, { useState, useEffect, lazy, Suspense } from 'react';
+import './HomePage.css';
+
+// Lazy load components
+const MapView = lazy(() => import('../components/MapView'));
+const SearchBar = lazy(() => import('../components/SearchBar'));
+const PropertyList = lazy(() => import('../components/PropertyList'));
 
 const HomePage = () => {
-  const [searchParams, setSearchParams] = useState({}); // Holds the search parameters
-  const [listings, setListings] = useState([]); // Holds the listings data
+  const [searchParams, setSearchParams] = useState({});
+  const [listings, setListings] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (Object.keys(searchParams).length > 0) {
+      setIsLoading(true);
+      // Fetch listings from API or service
+      // Replace with actual API call
+      fetchListings(searchParams)
+        .then(data => setListings(data))
+        .catch(err => setError(err))
+        .finally(() => setIsLoading(false));
+    }
+  }, [searchParams]);
 
   const handleSearch = (params) => {
-    // Function to handle search
     setSearchParams(params);
-    // Fetch listings from API or service
   };
+
+  if (error) {
+    return <div>Error loading listings</div>;
+  }
 
   return (
     <div className="homepage">
-      <SearchBar onSearch={handleSearch} />
-      <div className="map-and-listings">
-        <MapView searchParams={searchParams} listings={listings} />
-        <PropertyList listings={listings} />
-      </div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchBar onSearch={handleSearch} />
+        <div className="map-and-listings">
+          {isLoading ? (
+            <div>Loading listings...</div>
+          ) : (
+            <>
+              <MapView searchParams={searchParams} listings={listings} />
+              <PropertyList listings={listings} />
+            </>
+          )}
+        </div>
+      </Suspense>
     </div>
   );
 };
