@@ -18,15 +18,28 @@ npm install  # or yarn install
 Use code with caution.
 Running the Project (if applicable)
 
+Frontend:
+
 If this project has a frontend component, you might need to start a development server:
 Bash
 npm start  # or yarn start (refer to project instructions)
 Use code with caution.
 This will typically launch the application in your web browser, usually at http://localhost:3000 or a similar address.
-If this project focuses on backend functionalities, specific instructions for running it might be provided.
-Project Structure (Optional)
+Backend:
 
-Briefly describe the main project directories and their purposes (e.g., src for source code, public for static assets).
+If this project focuses on backend functionalities, specific instructions for running it might be provided in the backend directory (or a similar name) with a separate README file or instructions within the code itself.
+Project Structure
+
+This is a basic project structure, yours might differ:
+
+affordable-housing-project/
+├── package.json
+├── README.md  # This file
+├── public/      # Static assets (images, fonts, etc.)
+└── src/          # Source code
+    ├── components/  # Reusable UI components
+    ├── pages/       # Application pages or routes
+    └── ...          # Other folders as needed (styles, utils, etc.)
 Contributing
 
 Fork the repository on GitHub.
@@ -36,11 +49,11 @@ Push your changes to your forked repository.
 Create a pull request from your branch to the main branch of the upstream repository.
 License
 
-Specify the license under which your project is distributed (e.g., MIT License, Apache License). You can find boilerplate license text online or use a service like https://choosealicense.com/.
+This project is licensed under the MIT License (see the LICENSE file for details).
 
 Additional Information
 
-Include any relevant details about the project, its goals, and potential future directions.
-Mention any external libraries or frameworks used in the project.
-If applicable, add links to API documentation or external resources.
-Remember to replace placeholders like <your-username> with your actual details.
+This is a work-in-progress project for affordable housing search.
+Feel free to contribute by following the guidelines above.
+We are currently focusing on (briefly describe the current development focus).
+Let us know if you have any questions!
