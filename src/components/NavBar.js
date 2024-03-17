@@ -1,13 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'; // Using NavLink for active state styling
 import './NavBar.css'; // Make sure the CSS file is in the same directory
 
 const NavBar = () => {
+  const getNavLinkClass = (isActive) => {
+    return isActive ? 'nav-link active' : 'nav-link';
+  };
+
   return (
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/listings">Listings</Link>
-      <Link to="/about">About</Link>
+      <NavLink to="/" className={({ isActive }) => getNavLinkClass(isActive)}>Home</NavLink>
+      <NavLink to="/listings" className={({ isActive }) => getNavLinkClass(isActive)}>Listings</NavLink>
+      <NavLink to="/about" className={({ isActive }) => getNavLinkClass(isActive)}>About</NavLink>
       {/* Add other navigation links as needed */}
     </nav>
   );

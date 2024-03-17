@@ -1,12 +1,14 @@
-/* src/components/MapView.css */
 .map-container {
-    height: 400px; /* Fixed height or based on viewport height */
-    width: 100%; /* Container should take the full width */
+  height: 50vh; /* Use viewport height for a responsive design */
+  width: 100%; /* Container should take the full width */
+  border: 1px solid #ddd; /* Subtle border for definition */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Ensures nothing spills out of the container */
+}
+
+@media (max-width: 768px) {
+  .map-container {
+      height: 30vh; /* Adjust height for mobile devices */
   }
-  
-  @media (max-width: 768px) {
-    .map-container {
-      height: 200px; /* Smaller map height on mobile devices */
-    }
-  }
-  
+}

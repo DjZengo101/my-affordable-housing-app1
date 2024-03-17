@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ListingCard from '../components/ListingCard';
+import SearchBar from '../components/SearchBar';
 
 const mockListings = [
   {
@@ -24,14 +25,47 @@ const mockListings = [
 ];
 
 const ListingsPage = () => {
-  const [listings, setListings] = useState(mockListings);
+  const [listings] = useState(mockListings);
+  const [filteredResults, setFilteredResults] = useState(mockListings);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSearch = (searchCriteria) => {
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const filtered = listings.filter(listing => 
+        listing.address.toLowerCase().includes(searchCriteria.address.toLowerCase()) &&
+        listing.price.toLowerCase().includes(searchCriteria.price.toLowerCase()) &&
+        listing.beds >= searchCriteria.beds &&
+        listing.baths >= searchCriteria.baths &&
+        listing.sqft >= searchCriteria.sqft
+      );
+
+      setFilteredResults(filtered);
+    } catch (err) {
+      setError('An error occurred while filtering listings.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="listings-page">
       <h1>Affordable Housing Listings</h1>
-      {listings.map((listing) => (
-        <ListingCard key={listing.id} listing={listing} />
-      ))}
+      <SearchBar onSearch={handleSearch} />
+
+      {error && <p>{error}</p>}
+      {isLoading ? <p>Loading...</p> : (
+        filteredResults.length > 0 ? (
+          filteredResults.map((listing) => (
+            <ListingCard key={listing.id} listing={listing} />
+          ))
+        ) : (
+          <p>No listings found matching your criteria.</p>
+        )
+      )}
     </div>
   );
 };

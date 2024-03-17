@@ -1,21 +1,59 @@
-// src/components/SearchBar.js
 import React, { useState } from 'react';
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchParams, setSearchParams] = useState({
+    location: '',
+    minPrice: '',
+    maxPrice: '',
+    bedrooms: '',
+    bathrooms: '',
+  });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSearch(searchTerm);
+  const handleChange = (e) => {
+    setSearchParams({ ...searchParams, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSearch(searchParams);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="search-bar">
       <input
         type="text"
-        placeholder="Search by city, neighborhood, or ZIP"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        name="location"
+        placeholder="Location"
+        value={searchParams.location}
+        onChange={handleChange}
+      />
+      <input
+        type="number"
+        name="minPrice"
+        placeholder="Min Price"
+        value={searchParams.minPrice}
+        onChange={handleChange}
+      />
+      <input
+        type="number"
+        name="maxPrice"
+        placeholder="Max Price"
+        value={searchParams.maxPrice}
+        onChange={handleChange}
+      />
+      <input
+        type="number"
+        name="bedrooms"
+        placeholder="Bedrooms"
+        value={searchParams.bedrooms}
+        onChange={handleChange}
+      />
+      <input
+        type="number"
+        name="bathrooms"
+        placeholder="Bathrooms"
+        value={searchParams.bathrooms}
+        onChange={handleChange}
       />
       <button type="submit">Search</button>
     </form>

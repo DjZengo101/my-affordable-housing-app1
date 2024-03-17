@@ -1,13 +1,34 @@
 .footer {
   background-color: #333; /* Dark gray background */
   color: #fff; /* White text */
-  padding: 1rem;
+  padding: 1.5rem; /* Increased padding for better spacing */
   text-align: center; /* Center content horizontally */
   position: fixed; /* Make the footer fixed to the bottom */
   bottom: 0; /* Position it at the bottom of the viewport */
   width: 100%; /* Make it span the full width of the screen */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Improved typography */
 }
 
+.footer a {
+  color: #fff; /* Ensuring links are white */
+  text-decoration: none; /* No underline on links */
+  padding: 0 0.5rem; /* Spacing around links */
+}
+
+.footer a:hover {
+  text-decoration: underline; /* Underline on hover for better UX */
+}
+
+/* Smoother transitions on hover */
+.footer a:hover,
+.footer a:focus {
+  transition: color 0.3s ease-in-out;
+}
+
+/* Adding a bit of spacing and styling to the copyright section */
 .copyright {
-  margin-bottom: 0.5rem; /* Add some space between copyright and links */
+  margin-bottom: 0.5rem; /* Existing margin */
+  font-size: 0.9rem; /* Slightly smaller font for subtlety */
+  letter-spacing: 0.1em; /* Spacing out the letters for a refined look */
 }

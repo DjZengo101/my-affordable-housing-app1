@@ -1,6 +1,13 @@
 .listing-card {
-    /* Example styles */
-    border: 1px solid #ddd;
-    padding: 16px;
-    margin-bottom: 16px;
-  }
+  border: 1px solid #ddd; /* Subtle border */
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.listing-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Increased shadow on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
