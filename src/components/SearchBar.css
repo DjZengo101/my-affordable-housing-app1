@@ -1,0 +1,22 @@
+/* src/components/SearchBar.css */
+.search-bar form {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  
+  .search-bar input,
+  .search-bar button {
+    margin: 0.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .search-bar form {
+      flex-direction: column;
+    }
+  
+    .search-bar input {
+      width: 100%;
+    }
+  }
+  
