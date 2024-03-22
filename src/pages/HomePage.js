@@ -34,6 +34,11 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
+      <header className="homepage-header">
+        {/* Directly reference the logo from the public folder */}
+        <img src="/logo.jpeg" alt="Company Logo" className="company-logo" />
+        <h1>CARTOWave Solutions</h1>
+      </header>
       <Suspense fallback={<div>Loading...</div>}>
         <SearchBar onSearch={handleSearch} />
         <div className="map-and-listings">
